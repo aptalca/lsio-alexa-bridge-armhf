@@ -1,0 +1,26 @@
+#!/usr/bin/with-contenv bash
+
+cd /config
+# figuring out which version to install
+if [ ! -z $VERSION ]; then
+  echo "Manual version override:" $VERSION
+else
+  #Check the latest version on github
+  VERSION="$(curl -sX GET https://api.github.com/repos/bwssytems/ha-bridge/releases/latest | grep 'tag_name' | cut -d\" -f4)"
+  VERSION=${VERSION:1}
+  echo "Latest version on bwssystems github repo is" $VERSION
+fi
+
+# downloading the desired version if necessary
+if [ ! -f /config/ha-bridge-"$VERSION".jar ]; then
+  echo "Installing version '$VERSION'"
+  wget https://github.com/bwssytems/ha-bridge/releases/download/v"$VERSION"/ha-bridge-"$VERSION".jar
+else
+  echo "Using existing version '$VERSION'"
+fi
+
+export ADDPARAM="-Dupnp.config.address=$SERVERIP -Dserver.port=$SERVERPORT"
+echo -e "Parameters used:\nServer IP : $SERVERIP\nServer Port : $SERVERPORT"
+
+# starting bridge
+exec s6-setuidgid abc java -jar $ADDPARAM ha-bridge-"$VERSION".jar 2>&1 | tee /config/ha-bridge.log
