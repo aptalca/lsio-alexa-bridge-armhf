@@ -1,9 +1,9 @@
 [linuxserverurl]: https://linuxserver.io
 [forumurl]: https://forum.linuxserver.io
-[ircurl]: https://www.linuxserver.io/index.php/irc/
-[podcasturl]: https://www.linuxserver.io/index.php/category/podcast/
+[ircurl]: https://www.linuxserver.io/irc/
+[podcasturl]: https://www.linuxserver.io/podcast/
 
-[![linuxserver.io](https://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)][linuxserverurl]
+[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 
 The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
 * [forum.linuxserver.io][forumurl]
