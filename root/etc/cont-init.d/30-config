@@ -19,8 +19,4 @@ else
   echo "Using existing version ${VERSION}"
 fi
 
-export ADDPARAM="-Dupnp.config.address=${SERVERIP} -Dserver.port=${SERVERPORT}"
 echo -e "Parameters used:\nServer IP : ${SERVERIP}\nServer Port : ${SERVERPORT}"
-
-# starting bridge
-exec java -jar $ADDPARAM ha-bridge-"$VERSION".jar 2>&1 | tee /config/ha-bridge.log
