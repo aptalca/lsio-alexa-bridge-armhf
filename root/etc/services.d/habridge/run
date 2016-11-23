@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+
+ADDPARAM="-Dupnp.config.address=${SERVERIP} -Dserver.port=${SERVERPORT}"
+cd /config
+exec \
+        java -jar ${ADDPARAM} ha-bridge-"$VERSION".jar 2>&1 | tee /config/ha-bridge.log
