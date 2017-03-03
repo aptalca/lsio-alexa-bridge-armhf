@@ -1,14 +1,11 @@
-FROM lsiobase/alpine.armhf
+FROM lsiobase/alpine.armhf:3.5
 MAINTAINER aptalca
 
 # install packages
 RUN \
  apk add --no-cache \
 	curl \
-	openssl && \
-
- apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/community  \
+	openssl \
 	openjdk8-jre
 
 # copy local files
